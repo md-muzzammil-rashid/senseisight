@@ -3,7 +3,6 @@ import { TailSpin } from 'react-loader-spinner';
 import {addDoc} from 'firebase/firestore'
 import {seriesRef} from './firebase/firebase'
 import sweetAlert from 'sweetalert';
-import { data } from 'autoprefixer';
 import { AppState } from '../App';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';

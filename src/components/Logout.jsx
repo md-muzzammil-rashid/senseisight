@@ -10,8 +10,8 @@ const Logout = () => {
     const useAppState = useContext(AppState)
     const navigate = useNavigate()
   return (
-    <div className='flex w-screen h-screen justify-center items-center'>
-    <h2>Logout as {auth.currentUser.displayName}</h2>
+    <div className='flex flex-col w-screen h-screen justify-center items-center'>
+    <h2 className='mb-3'>Logout as {auth.currentUser.displayName}</h2>
         <Button 
             onClick={()=>{
                     localStorage.clear()

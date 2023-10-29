@@ -15,7 +15,7 @@ const Header = () => {
       <>
         <Link to={'/add'}>
           <Button variant="outlined" color='success'>
-            <h2 className='cursor-pointer text-lg items-center'><AddIcon className='mr-2 font-bolder' />Add New</h2>
+            <h2 className='cursor-pointer text-lg items-center'> &nbsp;<AddIcon className='mr-2 font-bolder' /></h2>
           </Button>
           
         </Link>
