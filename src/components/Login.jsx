@@ -43,9 +43,9 @@ const Login = () => {
 
     // }
 
-    const clickHandler = async (e) => {
+    const clickHandler = (e) => {
         e.preventDefault()
-        await signInWithPopup(auth, provider).then((data) => {
+        signInWithPopup(auth, provider).then((data) => {
             setLogin(data.user.email)
             console.log(Login);
         }
