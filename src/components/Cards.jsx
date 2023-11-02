@@ -30,7 +30,7 @@ const Cards = () => {
 
         data.map((e, i) => {
           return (
-            <Link  to={`/details/${e.id}`} element={<Details />}>
+            <Link key={i} to={`/details/${e.id}`} element={<Details />}>
               <div className='overflow-hidden flex min-h-96 flex-wrap  w-full justify-center '>
 
                 <div key={i} className='card mt-4 transition-all duration-200 hover:scale-100 cursor-pointer p-2 rounded-xl hover:-translate-y-1'>

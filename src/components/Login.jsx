@@ -2,48 +2,66 @@ import { Button } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import { auth, provider } from './firebase/firebase'
 import { signInWithPopup } from 'firebase/auth'
-import swal from 'sweetalert'
+// import swal from 'sweetalert'/
 import { AppState } from '../App'
 import { useNavigate } from 'react-router-dom'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from './firebase/firebase'
 
 
 const Login = () => {
     const useAppState = useContext(AppState)
-    const [value, setValue] = useState('')
+    const [Login, setLogin] = useState('')
+    const [userData, setUserData] = useState({})
     const navigate = useNavigate()
-    
-    useEffect(()=>{
-        setValue(localStorage.getItem('email'))
-    },[value])
+
+    // const clickHandler= async ()=>{
+    //     try {
+    //         await signInWithPopup(auth, provider).then((data) => {
+    //             setLogin(data.user.email)
+    //             console.log(data);
+    //         )
+    //     }
+    //             // localStorage.setItem('email', data.user.email);
+    //             // const userD =  data.user;
+
+    //             // // swal({
+    //             // //     title: "Login Successful",
+    //             // //     icon: 'success',
+    //             // //     buttons: false,
+    //             // //     timer: 3000
+    //             // // })
+    //             // useAppState.setLogin(true)
+    //             // setUserData({ uid: userD.uid, displayName: userD.displayName, photoURL: userD.photoURL, email: userD.email })
+    //             // console.log(userData)
+
+    //             // navigate(-1)
+    //         // }) 
+    //      catch (error) {
+    //         // 
+    //     }
+
+    // }
+
+    const clickHandler = async (e) => {
+        e.preventDefault()
+        await signInWithPopup(auth, provider).then((data) => {
+            setLogin(data.user.email)
+            console.log(Login);
+        }
+        )
+    }
+
+    // useEffect(() => {
+
+    //     setLogin(localStorage.getItem('email'))
+    // }, [Login,userData])
     return (
         <div className='flex w-screen h-screen justify-center items-center'>
-            <Button 
-            onClick={()=>{
-                try {
-                    signInWithPopup(auth,provider).then((data)=>{
-                    setValue(data.user.email)
-                    localStorage.setItem('email',data.user.email)
-                    swal({
-                        title: "Login Successful",
-                        icon: 'success',
-                        buttons: false,
-                        timer: 3000
-                    })
-                    useAppState.setLogin(true)
-                    navigate(-1)
-                })
-                } catch (error) {
-                    swal({
-                        title: error,
-                        icon: 'error',
-                        buttons: false,
-                        timer: 3000
-                    })
-                }
-                
-            }}
-            color='success' 
-            variant="outlined">
+            <Button
+                onClick={ clickHandler}
+                color='success'
+                variant="outlined">
                 Login with Google
             </Button>
         </div>
